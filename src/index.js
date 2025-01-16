@@ -12,5 +12,5 @@ App.use(routes);
 
 const agora = new Date();
 console.log(agora);
-//teste git
+
 App.listen(process.env.PORT, () => console.log("Server is running in port: "+process.env.PORT+ " ..."))

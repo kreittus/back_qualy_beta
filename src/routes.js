@@ -10,7 +10,7 @@ const CrudSetores = require('./controller/crudSetores.js');
 const crudSetores = require('./controller/crudSetores.js');
 const crudTarefas = require('./controller/crudTarefas.js');
 const crudUsuarios = require('./controller/crudUsuario.js');
-//teste git 2
+
 routes.post('/authenticate', authenticate.user_authenticate)
 
 routes.use(authToken.tokenValited)
