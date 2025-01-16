@@ -10,9 +10,9 @@ const CrudSetores = require('./controller/crudSetores.js');
 const crudSetores = require('./controller/crudSetores.js');
 const crudTarefas = require('./controller/crudTarefas.js');
 const crudUsuarios = require('./controller/crudUsuario.js');
-//kreittu
+
 routes.post('/authenticate', authenticate.user_authenticate)
-//GIT
+
 routes.use(authToken.tokenValited)
 
 routes.post('/createNotificacao', CrudNotificacao.CreateNotificacao)
