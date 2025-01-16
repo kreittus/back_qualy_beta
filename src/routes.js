@@ -12,7 +12,7 @@ const crudTarefas = require('./controller/crudTarefas.js');
 const crudUsuarios = require('./controller/crudUsuario.js');
 
 routes.post('/authenticate', authenticate.user_authenticate)
-
+//GIT
 routes.use(authToken.tokenValited)
 
 routes.post('/createNotificacao', CrudNotificacao.CreateNotificacao)
