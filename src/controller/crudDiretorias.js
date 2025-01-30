@@ -2,9 +2,9 @@ const connection = require('../database/connection/connection.js')
 module.exports = {
 
     async CreateDiretoria(req, res){
-         const {descricao,id_usuario_resp } = req.body
+         const {sigla,descricao,id_usuario_resp } = req.body
 
-        var Data = {descricao,id_usuario_resp}  
+        var Data = {sigla,descricao,id_usuario_resp}  
         
         var conect = await connection('diretoria').insert(Data)   
         
@@ -28,10 +28,11 @@ module.exports = {
     },
 
     async updateDiretoria(req, res){
-        const {id, descricao,id_usuario_resp } = req.body
+        const {id, sigla, descricao, id_usuario_resp } = req.body
 
             var conect = await connection('diretoria')
             .where('id', id)
+            .update('sigla',sigla)
             .update('descricao',descricao)
             .update('id_usuario_resp',id_usuario_resp)
 

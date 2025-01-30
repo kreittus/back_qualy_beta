@@ -2,9 +2,9 @@ const connection = require('../database/connection/connection.js')
 module.exports = {
 
     async CreateTpNotificacao(req, res){
-         const {codigo,titulo } = req.body
+         const {codigo,titulo,descricao,gestor_id } = req.body
 
-        var Data = {codigo, titulo}  
+        var Data = {codigo,titulo,descricao,gestor_id}  
         
         var conect = await connection('tp_notificacao').insert(Data)   
         
@@ -28,12 +28,14 @@ module.exports = {
     },
 
     async updateTipoNotificacao(req, res){
-        const {id, codigo,titulo } = req.body
+        const {id, codigo,titulo,descricao,gestor_id } = req.body
 
             var conect = await connection('tp_notificacao')
             .where('id', id)
             .update('codigo',codigo)
             .update('titulo',titulo)
+            .update('descricao',descricao)
+            .update('gestor',gestor_id) 
 
             if(conect){
                 return(res.status(200).json('Tipo alterado com sucesso!'))

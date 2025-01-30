@@ -1,8 +1,9 @@
-const ad = require("../config/activeDirectory.js");
+const ship = require("../config/activeDirectory.js");
 const connection = require('../database/connection/connection.js')
 const jsonwebtoken = require("jsonwebtoken");
 exports.user_authenticate = async (req,res) => {
     const {user, pass, domain="FUNDHOSPAR.LOCAL"} = req.body;
+
 
     if(typeof domain !== 'undefined'){
         try { 
@@ -22,13 +23,24 @@ exports.user_authenticate = async (req,res) => {
                 });
             }    
 
-            await ad.authenticate(user+'@'+domain, pass, 
+            await ship.ad.authenticate(user+'@'+domain, pass, 
                 async function (err, auth){
                     if(auth){
                         var Data = { "user":user,"senha":pass}  
-        
+                        
+/*                         ship.ad.getGroupMembershipForUser(user+'@'+domain, function(err, groups) {
+                            if (err) {
+                              console.log('ERROR: ' +console.log(err));
+                              return;
+                            }
+                           
+                            if (! groups) console.log('User:  not found.');
+                            else console.log(groups);
+                          });
+ */
                         var conect = await connection('usuario').insert(Data)  
                         var conect_id = await connection('usuario').select('*').orderBy('id', 'desc');
+
                         console.log('conectssss')
                         console.log(conect_id[0].id) 
                         var token = jsonwebtoken.sign(
